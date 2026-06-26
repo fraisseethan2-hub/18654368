@@ -1,0 +1,310 @@
+Tu es un expert en UX/UI, SEO, développement web moderne (HTML5/CSS3/JS, frameworks front modernes) et optimisation pour AdSense. Ta mission est de repenser entièrement le site web suivant, hébergé sur Firebase avec domaine personnalisé : https://www.hypernovalearninginstitute.org/
+
+Objectif global :
+- Transformer ce site en une plateforme éditoriale et pédagogique moderne, utile et attractive, qui puisse devenir une alternative crédible à des sites comme Comment Ça Marche, Le Crabe Info, Droidwin, IT-Connect, Frandroid, Xiaomitime, Malekal, etc.
+- Optimiser le site pour le référencement naturel (SEO) et la compatibilité AdSense (structure, contenu, pages légales, performances).
+- Prévoir une architecture claire, scalable, et facilement administrable (ajout d’articles, de pages, de catégories).
+
+1) Refonte du design et de l’UX
+- Proposer une nouvelle identité visuelle moderne, professionnelle et rassurante (palette de couleurs, typographies, style d’illustrations/icônes).
+- Concevoir une page d’accueil orientée “magazine tech / tutoriels” avec :
+  - Un header clair (logo, menu, recherche, CTA éventuel).
+  - Un bloc “articles à la une”.
+  - Des sections par catégories (ex : Tutoriels, Android, Windows, Réseaux, Sécurité, Astuces, Guides débutants, etc.).
+  - Un footer complet (liens utiles, pages légales, réseaux sociaux, newsletter).
+- Prévoir un design responsive (mobile-first) parfaitement lisible sur smartphone, tablette et desktop.
+- Intégrer des emplacements non intrusifs pour la publicité (bannières, in-article, sidebar) en respectant une bonne expérience utilisateur.
+
+2) Architecture des pages et contenu
+Crée une structure de site claire, par exemple :
+- Page d’accueil
+- Page “Actualités” (flux d’articles récents)
+- Page “Tutoriels / Guides” (avec catégories et filtres)
+- Page “À propos”
+- Page “Contact”
+- Page “Mentions légales”
+- Page “Politique de confidentialité”
+- Page “Politique de cookies” (si nécessaire)
+- Page “Plan du site” (HTML)
+- Éventuellement : page “FAQ”, page “Services” (si le site propose des prestations).
+
+Pour chaque type de page :
+- Définir la structure des sections (titres H1/H2/H3, blocs de contenu, encadrés, call-to-action).
+- Proposer des exemples de textes d’introduction, de rubriques et de micro-contenus (ex : textes de boutons, messages d’erreur, formulaires).
+- Pour la page “Actualités” et les pages “Tutoriels”, définir un template d’article :
+  - Titre optimisé SEO.
+  - Chapeau / résumé.
+  - Sommaire cliquable (ancre).
+  - Sections structurées (H2/H3).
+  - Bloc “FAQ” ou “Questions fréquentes”.
+  - Bloc “Articles liés”.
+  - Zone commentaires (optionnelle, mais prévoir l’emplacement).
+  - Emplacements pour publicités AdSense.
+
+3) SEO technique et sémantique
+- Générer une stratégie SEO de base :
+  - Proposer une arborescence de catégories et sous-catégories cohérente avec le positionnement “aide, tutoriels, tech, numérique”.
+  - Suggérer une liste de mots-clés cibles (FR) pour les principales sections (ex : “tutoriel Android”, “problème Windows”, “sécurité informatique débutant”, etc.).
+- Pour chaque page principale, proposer :
+  - Un titre SEO (balise `<title>`) optimisé.
+  - Une meta description attractive.
+  - Des balises H1/H2/H3 cohérentes.
+- Intégrer les bonnes pratiques :
+  - Balises Open Graph (Facebook, LinkedIn) et Twitter Cards.
+  - Données structurées Schema.org (Article, Breadcrumb, Organization, Website, etc.).
+  - URL propres et lisibles (slug courts, descriptifs, en minuscules, séparés par des tirets).
+  - Maillage interne (liens entre articles, catégories, pages importantes).
+
+4) robots.txt, sitemap et indexation
+- Proposer un fichier `robots.txt` adapté pour un site public, compatible avec Google, Bing, etc., qui :
+  - Autorise l’indexation des pages publiques.
+  - Bloque éventuellement les répertoires techniques ou internes (si pertinents).
+- Proposer un sitemap XML (structure et exemple) listant :
+  - Pages principales.
+  - Catégories.
+  - Articles.
+- Indiquer où et comment référencer le sitemap dans `robots.txt`.
+- Prévoir une page “Plan du site” HTML pour les utilisateurs.
+
+5) Conformité AdSense et légale
+- Prévoir toutes les pages nécessaires pour qu’AdSense accepte le site :
+  - Mentions légales complètes (adaptées à un site français).
+  - Politique de confidentialité détaillant l’usage des cookies, des données, et la présence de publicités.
+  - Politique de cookies (bannière de consentement à prévoir dans le design).
+- Indiquer les emplacements recommandés pour les annonces AdSense :
+  - Dans les articles (entre les sections).
+  - En sidebar (desktop).
+  - En haut/bas de page (bannières).
+- S’assurer que le design reste propre, lisible et non “spammy”.
+
+6) Services et fonctionnalités pour attirer le public
+- Proposer des idées de services / fonctionnalités qui donnent une vraie valeur ajoutée :
+  - Guides pas-à-pas interactifs (captures d’écran, vidéos, checklists).
+  - Comparatifs (ex : applis, smartphones, OS, outils).
+  - Outils simples (ex : générateurs, convertisseurs, checklists téléchargeables).
+  - Newsletter (inscription simple, promesse claire : “Recevez chaque semaine des tutoriels et astuces tech”).
+  - Moteur de recherche interne performant (par mots-clés, catégories, tags).
+- Prévoir un système de tags pour les articles (ex : “Android”, “Windows 11”, “Wi-Fi”, “Sécurité”, “Xiaomi”, etc.) pour améliorer la navigation et le SEO.
+
+7) Performance, accessibilité et bonnes pratiques
+- Proposer des recommandations pour :
+  - Optimiser les performances (images compressées, lazy loading, CSS/JS minifiés, mise en cache).
+  - Améliorer l’accessibilité (contraste, tailles de police, ARIA, navigation clavier).
+  - Respecter les bonnes pratiques Core Web Vitals (LCP, CLS, FID).
+- Adapter les recommandations au contexte Firebase Hosting (structure des fichiers, redirections, headers, cache, etc. si pertinent).
+
+8) Livrables attendus dans ta réponse
+- Une description claire de la nouvelle architecture du site (pages, catégories, navigation).
+- Une maquette fonctionnelle décrite textuellement (section par section) pour :
+  - La page d’accueil.
+  - La page “Actualités”.
+  - La page “Tutoriels / Guides”.
+  - Un article type.
+  - Les pages légales.
+- Des exemples concrets de :
+  - Balises `<title>` et meta descriptions.
+  - Balises Open Graph et Twitter Card.
+  - Extraits de `robots.txt` et de sitemap XML.
+- Une liste d’idées d’articles et de rubriques pour lancer la section “Actualités” et “Tutoriels” (au moins 20 idées de sujets variés).
+
+Réponds en français, de manière structurée, avec des sections et sous-sections claires, comme si tu préparais un cahier des charges complet pour la refonte du site. Il faut aussi une page contacts qui remplace la section contact actuelle, il faut une vrai page avec le contact, pas qu'un lien mailto direct. Il faut bien mettre en valeur metadata description pour que se soit visible sur tous les moteurs de recherche.
+
+Tu es un expert de très haut niveau en SEO, marketing digital, stratégie de contenu, optimisation UX, analyse de trafic, monétisation web et croissance organique.
+Ta mission est de m’aider à augmenter fortement le trafic, l’attractivité et l’audience de mon site web, afin de viser un potentiel de revenus pouvant atteindre jusqu’à 10 000 € par mois grâce à une croissance réelle du trafic.
+
+🔥 1. Analyse stratégique globale
+Analyse mon site (ou le type de site que je veux créer) et fournis :
+
+les forces et faiblesses
+
+les opportunités SEO
+
+les niches les plus rentables
+
+les axes de croissance les plus rapides
+
+les erreurs à éviter
+
+les priorités à court, moyen et long terme
+
+les stratégies pour surpasser les concurrents
+
+🔥 2. Recherche de mots‑clés à fort potentiel
+Génère une liste de 50 mots‑clés classés par :
+
+volume de recherche
+
+difficulté SEO
+
+intention de recherche
+
+potentiel de trafic
+
+potentiel de monétisation
+
+opportunité SEO (faible concurrence)
+
+Inclure aussi :
+
+mots‑clés longue traîne
+
+questions fréquentes
+
+sujets tendance
+
+opportunités pour Featured Snippets
+
+🔥 3. Plan éditorial complet
+Crée un calendrier éditorial de 30 jours, incluant :
+
+30 titres optimisés
+
+structure H1/H2/H3 pour chaque article
+
+mots‑clés secondaires
+
+angle éditorial
+
+objectif SEO
+
+type de contenu (guide, tutoriel, comparatif, FAQ, liste, étude)
+
+🔥 4. Génération d’articles SEO premium
+Pour chaque mot‑clé, génère un article :
+
+minimum 1 500 mots
+
+structuré (H1, H2, H3, listes, tableaux)
+
+optimisé pour Featured Snippets
+
+avec une FAQ SEO
+
+avec des exemples concrets
+
+avec un ton clair, pédagogique et engageant
+
+avec des CTA non commerciaux (ex : lire un autre article)
+
+avec des mots‑clés secondaires intégrés naturellement
+
+🔥 5. Optimisation UX et attractivité
+Fournis des recommandations pour :
+
+améliorer le design
+
+augmenter le temps passé sur la page
+
+réduire le taux de rebond
+
+améliorer la lisibilité
+
+optimiser la navigation
+
+renforcer l’identité visuelle
+
+rendre le site plus engageant
+
+améliorer la vitesse et l’expérience mobile
+
+🔥 6. Stratégie de croissance du trafic
+Propose une stratégie complète incluant :
+
+SEO on‑page
+
+SEO off‑page
+
+backlinks
+
+réseaux sociaux
+
+optimisation mobile
+
+optimisation vitesse
+
+contenu interactif (quiz, outils, comparateurs)
+
+techniques de growth hacking
+
+stratégies pour attirer du trafic international
+
+⚡ 7. Intégration obligatoire des 5 leviers fondamentaux
+Intègre obligatoirement dans toutes tes recommandations, stratégies et analyses les 5 leviers essentiels suivants :
+
+(1) Augmenter fortement le trafic (facteur n°1)
+Explique comment :
+
+attirer plus de visiteurs qualifiés
+
+augmenter le volume de pages vues
+
+améliorer le référencement naturel
+
+exploiter les tendances et les sujets evergreen
+
+optimiser la structure du site pour favoriser l’exploration
+
+créer des contenus capables de générer un trafic durable
+
+(2) Améliorer le RPM en choisissant une niche plus rentable
+Propose systématiquement :
+
+des niches à fort CPC
+
+des thématiques premium (finance, assurance, tech, immobilier, B2B, SaaS…)
+
+des mots‑clés à forte valeur publicitaire
+
+des opportunités de repositionnement vers des sujets mieux rémunérés
+
+(3) Optimiser l’emplacement des annonces
+Inclure des conseils précis sur :
+
+les zones chaudes (above the fold, début d’article, entre H2, fin d’article)
+
+les formats les plus performants
+
+l’équilibre entre monétisation et UX
+
+l’augmentation du taux de visibilité des annonces
+
+(4) Créer du contenu long, utile et engageant
+Chaque stratégie doit encourager la création de contenus :
+
+de plus de 1 500 mots
+
+riches, détaillés, pédagogiques
+
+structurés avec H2/H3, listes, tableaux, FAQ
+
+optimisés pour Featured Snippets
+
+capables de retenir l’utilisateur plus longtemps
+
+(5) Attirer du trafic venant de pays à fort CPC (USA, Canada, UK)
+Inclure des stratégies pour :
+
+cibler des mots‑clés anglophones
+
+créer des contenus internationaux
+
+optimiser le SEO pour Google US/CA/UK
+
+attirer un trafic premium
+
+exploiter les réseaux sociaux internationaux
+
+🎯 Objectif final
+Tout ce que tu produis doit viser à :
+
+augmenter fortement mon trafic
+
+améliorer l’attractivité de mon site
+
+développer une audience fidèle
+
+maximiser mon potentiel de croissance
+
+me rapprocher d’un site capable d’atteindre jusqu’à 10 000 € / mois grâce au trafic
+
+attention mon seul mail de contact est contact@hypernovalearninginstitute.org et je n'ai pas de réseaux sociaux et le lien de mon site est https://hypernovalearninginstitute.org/.

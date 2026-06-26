@@ -1,44 +1,60 @@
-# [Project name]
+# HyperNova Learning Institute
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A French-language tech editorial and tutorial platform — a modern alternative to Comment Ça Marche, Le Crabe Info, Malekal, and similar sites. Guides, tutorials, and tech news for French-speaking users.
 
 ## Run & Operate
 
+- `pnpm --filter @workspace/hypernova run dev` — run the frontend (port assigned by env)
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Frontend: React + Vite, wouter routing, Tailwind CSS v4, framer-motion
+- API: Express 5 (minimal — frontend is mostly static content)
+- Forms: react-hook-form + zod
+- Icons: lucide-react
+- Build: Vite (frontend), esbuild (API)
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/hypernova/src/` — main frontend application
+  - `src/pages/` — all page components (Home, Actualites, Tutoriels, Article, About, Contact, legal pages)
+  - `src/components/` — shared components (Header, Footer, AdSlot, SEOHead, CookieBanner, Newsletter, etc.)
+  - `src/data/` — hardcoded articles, tutorials, categories
+  - `src/hooks/` — useSEO, useTheme, etc.
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Frontend-only for MVP: no database needed, all content is hardcoded in data files for fast iteration
+- SEO via useEffect-based meta injection (no react-helmet) — canonical URLs, OG tags, Schema.org JSON-LD per page
+- Cookie consent persisted in localStorage (key: `hnl_cookie_consent`)
+- Dark mode persisted in localStorage (key: `hnl_theme`)
+- AdSense slots are structural containers only — no real ad script until AdSense approval
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+HyperNova Learning Institute — French-language tech platform covering:
+- Android, Windows, Réseaux & Wi-Fi, Sécurité informatique, Astuces, Guides débutants, Smartphones, Bureautique, Internet & Web
+- Tutoriels pas-à-pas, actualités tech, guides comparatifs
+- AdSense-ready structure with legal pages required for approval
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Language: French (all content and UI in French)
+- Contact email: contact@hypernovalearninginstitute.org
+- Site URL: https://hypernovalearninginstitute.org/
+- No social media accounts — do not add social links
+- AdSense-compatible: non-intrusive ad slots, full legal pages (RGPD)
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Google Fonts @import must be the VERY FIRST line in index.css (before @import "tailwindcss")
+- All CSS variables in :root must be replaced — scaffold ships with `red` placeholders
+- SEO meta tags must be set dynamically per route via useSEO hook
+- Cookie banner must appear on first visit (localStorage key: hnl_cookie_consent)
 
 ## Pointers
 

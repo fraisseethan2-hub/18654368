@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "HyperNova Learning Institute"
+version = "1.0.0"
+id = "artifacts/hypernova"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19510
+
+[services.development]
+run = "pnpm --filter @workspace/hypernova run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/hypernova", "run", "build" ]
+publicDir = "artifacts/hypernova/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19510"
+BASE_PATH = "/"

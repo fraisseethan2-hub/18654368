@@ -1,0 +1,206 @@
+export const CATEGORIES = [
+  "Android",
+  "Windows",
+  "Réseaux & Wi-Fi",
+  "Sécurité informatique",
+  "Astuces & Trucs",
+  "Guides débutants",
+  "Smartphones",
+  "Bureautique",
+  "Internet & Web",
+] as const;
+
+export type Category = (typeof CATEGORIES)[number];
+
+export const CATEGORY_COLORS: Record<Category, string> = {
+  Android: "from-green-400 to-green-600",
+  Windows: "from-blue-400 to-blue-600",
+  "Réseaux & Wi-Fi": "from-cyan-400 to-cyan-600",
+  "Sécurité informatique": "from-red-400 to-red-600",
+  "Astuces & Trucs": "from-yellow-400 to-orange-500",
+  "Guides débutants": "from-purple-400 to-purple-600",
+  Smartphones: "from-pink-400 to-pink-600",
+  Bureautique: "from-indigo-400 to-indigo-600",
+  "Internet & Web": "from-teal-400 to-teal-600",
+};
+
+export type ArticleType = "actualite" | "tutoriel";
+export type Difficulty = "Débutant" | "Intermédiaire" | "Avancé";
+
+export interface Article {
+  id: string;
+  slug: string;
+  type: ArticleType;
+  title: string;
+  excerpt: string;
+  category: Category;
+  readTime: number; // in minutes
+  difficulty?: Difficulty; // only for tutorials
+  date: string;
+  content: string; // full markdown/html content
+}
+
+export const ARTICLES: Article[] = [
+  {
+    id: "act-1",
+    slug: "android-15-nouveautes",
+    type: "actualite",
+    title: "Android 15 : toutes les nouveautés à connaître",
+    excerpt: "La dernière mise à jour de l'OS mobile de Google apporte des améliorations majeures en termes de sécurité, de gestion de la batterie et d'interface utilisateur. Découvrez ce qui change pour votre smartphone.",
+    category: "Android",
+    readTime: 3,
+    date: "2026-10-15T08:00:00Z",
+    content: "Contenu complet de l'article...",
+  },
+  {
+    id: "act-2",
+    slug: "windows-11-mise-a-jour-gaming",
+    type: "actualite",
+    title: "Windows 11 : la mise à jour qui change tout pour les PC gaming",
+    excerpt: "Microsoft déploie une nouvelle version de Windows 11 optimisée pour le jeu vidéo, avec des temps de chargement réduits et une meilleure gestion des ressources CPU.",
+    category: "Windows",
+    readTime: 4,
+    date: "2026-10-14T09:30:00Z",
+    content: "Contenu complet de l'article...",
+  },
+  {
+    id: "act-3",
+    slug: "wifi-7-ce-qu-il-faut-savoir",
+    type: "actualite",
+    title: "Wi-Fi 7 : ce qu'il faut savoir avant d'upgrader votre routeur",
+    excerpt: "La nouvelle norme Wi-Fi promet des débits impressionnants et une latence quasi nulle. Mais avez-vous vraiment besoin de changer votre équipement actuel ?",
+    category: "Réseaux & Wi-Fi",
+    readTime: 5,
+    date: "2026-10-12T14:15:00Z",
+    content: "Contenu complet de l'article...",
+  },
+  {
+    id: "act-4",
+    slug: "meilleures-applis-securite-android-2026",
+    type: "actualite",
+    title: "Les meilleures applis de sécurité pour Android en 2026",
+    excerpt: "Face à la recrudescence des malwares mobiles, nous avons testé et sélectionné les applications les plus efficaces pour protéger vos données personnelles sur Android.",
+    category: "Sécurité informatique",
+    readTime: 4,
+    date: "2026-10-10T11:00:00Z",
+    content: "Contenu complet de l'article...",
+  },
+  {
+    id: "act-5",
+    slug: "supprimer-definitivement-donnees-en-ligne",
+    type: "actualite",
+    title: "Comment supprimer définitivement ses données en ligne",
+    excerpt: "Effacer ses traces sur internet est devenu un véritable parcours du combattant. Voici les étapes indispensables pour reprendre le contrôle de votre identité numérique.",
+    category: "Sécurité informatique",
+    readTime: 6,
+    date: "2026-10-08T16:45:00Z",
+    content: "Contenu complet de l'article...",
+  },
+  {
+    id: "act-6",
+    slug: "comparatif-smartphones-milieu-de-gamme-2026",
+    type: "actualite",
+    title: "Comparatif : les meilleurs smartphones milieu de gamme en 2026",
+    excerpt: "Inutile de dépenser plus de 1000 euros pour avoir un excellent téléphone. Notre sélection des meilleurs rapports qualité-prix de l'année.",
+    category: "Smartphones",
+    readTime: 7,
+    date: "2026-10-05T10:20:00Z",
+    content: "Contenu complet de l'article...",
+  },
+  {
+    id: "tut-1",
+    slug: "desactiver-demarrage-automatique-applis-android",
+    type: "tutoriel",
+    title: "Comment désactiver le démarrage automatique des applis sur Android",
+    excerpt: "Votre smartphone est lent au démarrage ? Apprenez à identifier et bloquer les applications qui se lancent toutes seules en arrière-plan.",
+    category: "Android",
+    difficulty: "Débutant",
+    readTime: 5,
+    date: "2026-09-28T09:00:00Z",
+    content: "Contenu complet de l'article...",
+  },
+  {
+    id: "tut-2",
+    slug: "reparer-windows-11-sans-formater",
+    type: "tutoriel",
+    title: "Réparer Windows 11 sans formater : guide complet",
+    excerpt: "Écrans bleus, lenteurs, bugs inexplicables... Avant de procéder à une réinstallation complète, tentez ces méthodes de réparation intégrées à Windows 11.",
+    category: "Windows",
+    difficulty: "Intermédiaire",
+    readTime: 15,
+    date: "2026-09-25T14:30:00Z",
+    content: "Contenu complet de l'article...",
+  },
+  {
+    id: "tut-3",
+    slug: "configurer-vpn-gratuit-android",
+    type: "tutoriel",
+    title: "Configurer un VPN gratuit sur Android en 10 minutes",
+    excerpt: "Protégez votre connexion sur les réseaux Wi-Fi publics en installant un réseau privé virtuel fiable et gratuit. Suivez le guide pas à pas.",
+    category: "Sécurité informatique",
+    difficulty: "Débutant",
+    readTime: 10,
+    date: "2026-09-20T11:15:00Z",
+    content: "Contenu complet de l'article...",
+  },
+  {
+    id: "tut-4",
+    slug: "accelerer-connexion-wifi-astuces",
+    type: "tutoriel",
+    title: "Accélérer sa connexion Wi-Fi : 10 astuces efficaces",
+    excerpt: "Marre des vidéos qui saccadent et des téléchargements interminables ? Optimisez le signal de votre box internet avec ces réglages simples.",
+    category: "Réseaux & Wi-Fi",
+    difficulty: "Débutant",
+    readTime: 8,
+    date: "2026-09-15T16:00:00Z",
+    content: "Contenu complet de l'article...",
+  },
+  {
+    id: "tut-5",
+    slug: "proteger-pc-windows-11-sans-antivirus-payant",
+    type: "tutoriel",
+    title: "Protéger son PC sous Windows 11 sans antivirus payant",
+    excerpt: "Windows Defender est-il suffisant ? Comment bien le configurer et adopter les bonnes pratiques pour éviter les infections sans dépenser un centime.",
+    category: "Sécurité informatique",
+    difficulty: "Intermédiaire",
+    readTime: 12,
+    date: "2026-09-10T10:45:00Z",
+    content: "Contenu complet de l'article...",
+  },
+  {
+    id: "tut-6",
+    slug: "nettoyer-android-liberer-espace",
+    type: "tutoriel",
+    title: "Nettoyer son Android et libérer de l'espace en 5 étapes",
+    excerpt: "Mémoire saturée ? Découvrez comment faire le tri dans vos fichiers, vider le cache des applications et retrouver un espace de stockage confortable.",
+    category: "Android",
+    difficulty: "Débutant",
+    readTime: 7,
+    date: "2026-09-05T08:30:00Z",
+    content: "Contenu complet de l'article...",
+  },
+  {
+    id: "tut-7",
+    slug: "creer-adresse-email-jetable",
+    type: "tutoriel",
+    title: "Créer une adresse email jetable et sécurisée",
+    excerpt: "Évitez le spam et protégez votre véritable adresse email lors de vos inscriptions en ligne grâce aux services d'emails temporaires.",
+    category: "Internet & Web",
+    difficulty: "Débutant",
+    readTime: 5,
+    date: "2026-08-28T13:20:00Z",
+    content: "Contenu complet de l'article...",
+  },
+  {
+    id: "tut-8",
+    slug: "recuperer-fichiers-supprimes-windows",
+    type: "tutoriel",
+    title: "Récupérer des fichiers supprimés sous Windows",
+    excerpt: "Vous avez vidé la corbeille par erreur ? Pas de panique. Voici les meilleurs outils et méthodes pour restaurer vos documents perdus.",
+    category: "Windows",
+    difficulty: "Intermédiaire",
+    readTime: 20,
+    date: "2026-08-20T15:10:00Z",
+    content: "Contenu complet de l'article...",
+  },
+];
