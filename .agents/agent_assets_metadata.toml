@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "ZMHNcaflffd1-m-x5JoCz"
+uri = "file://HyperNova_LI.zip"
+type = "unspecified"
+title = "HyperNova Learning Institute — Code source"
