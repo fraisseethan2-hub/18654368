@@ -105,50 +105,11 @@ export default function ArticlePage() {
             {/* Hero Image / Gradient Placeholder */}
             <div className={cn("w-full aspect-[2/1] md:aspect-[21/9] rounded-xl mb-10 opacity-90", gradientClass)}></div>
 
-            <div className="prose prose-lg dark:prose-invert max-w-none mb-12 text-foreground/90">
-              <div className="bg-muted/50 p-6 rounded-lg mb-8 border border-border">
-                <h3 className="text-lg font-bold mt-0 mb-4 flex items-center gap-2">
-                  <Hash className="w-5 h-5 text-primary" /> Sommaire
-                </h3>
-                <ul className="list-none pl-0 space-y-2 m-0">
-                  <li><a href="#section-1" className="text-primary hover:underline no-underline font-medium">1. Introduction et enjeux actuels</a></li>
-                  <li><a href="#section-2" className="text-primary hover:underline no-underline font-medium">2. Comprendre le fonctionnement de base</a></li>
-                  <li><a href="#section-3" className="text-primary hover:underline no-underline font-medium">3. Guide étape par étape (Méthode recommandée)</a></li>
-                  <li><a href="#section-4" className="text-primary hover:underline no-underline font-medium">4. Cas particuliers et dépannage</a></li>
-                  <li><a href="#section-5" className="text-primary hover:underline no-underline font-medium">5. Conclusion et bonnes pratiques</a></li>
-                </ul>
-              </div>
-
-              <h2 id="section-1">1. Introduction et enjeux actuels</h2>
-              <p>Dans un écosystème numérique en constante évolution, la maîtrise de ses outils n'est plus une option, mais une nécessité. L'enjeu majeur réside dans la capacité à sécuriser ses données tout en profitant pleinement des fonctionnalités offertes par les nouvelles technologies. Ce guide vous accompagne dans cette démarche essentielle.</p>
-              <p>La première étape consiste à bien évaluer la situation : quels sont vos besoins réels ? Quels risques êtes-vous prêt à accepter ? Une fois ces paramètres définis, il devient beaucoup plus simple d'adopter la bonne stratégie.</p>
-              
-              <h2 id="section-2">2. Comprendre le fonctionnement de base</h2>
-              <p>Avant de plonger dans les manipulations techniques, il convient de rappeler quelques principes fondamentaux. La structure même de l'outil détermine les possibilités qui s'offrent à vous. Ne sautez pas cette étape, elle vous évitera bien des erreurs par la suite.</p>
-              <ul>
-                <li><strong>Identification des composants :</strong> Repérez les éléments clés de l'interface.</li>
-                <li><strong>Gestion des permissions :</strong> Vérifiez quels accès sont accordés par défaut.</li>
-                <li><strong>Sauvegarde préventive :</strong> Pensez toujours à créer un point de restauration.</li>
-              </ul>
-
-              <AdSlot type="banner" className="my-10" />
-
-              <h2 id="section-3">3. Guide étape par étape (Méthode recommandée)</h2>
-              <p>Voici la procédure complète pour parvenir au résultat attendu. Suivez ces étapes chronologiquement :</p>
-              <ol>
-                <li>Ouvrez le panneau de configuration principal de votre appareil.</li>
-                <li>Naviguez vers la section dédiée à la gestion avancée.</li>
-                <li>Désactivez les options superflues identifiées lors de la phase d'analyse.</li>
-                <li>Appliquez les nouveaux paramètres et redémarrez si nécessaire.</li>
-              </ol>
-              <p>Si un message d'avertissement apparaît, lisez-le attentivement avant de confirmer. Dans 90% des cas, il s'agit d'une procédure standard de validation.</p>
-
-              <h2 id="section-4">4. Cas particuliers et dépannage</h2>
-              <p>Il arrive parfois que les choses ne se déroulent pas comme prévu. Des conflits logiciels ou des configurations spécifiques peuvent entraver le processus. Si vous rencontrez une erreur code 404 ou 500, vérifiez d'abord votre connexion internet et purgez votre cache.</p>
-
-              <h2 id="section-5">5. Conclusion et bonnes pratiques</h2>
-              <p>Vous avez maintenant toutes les clés en main. N'oubliez pas que la maintenance est un processus continu. Nous vous recommandons de vérifier ces paramètres au moins une fois par mois pour vous assurer que rien n'a été modifié lors d'une mise à jour système.</p>
-            </div>
+            <div
+              className="prose prose-lg dark:prose-invert max-w-none mb-6 text-foreground/90 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mt-6 [&_h3]:mb-3 [&_p]:leading-relaxed [&_p]:mb-4 [&_ul]:my-4 [&_ol]:my-4 [&_li]:mb-2 [&_strong]:font-semibold [&_a]:text-primary [&_a]:underline [&_.sommaire]:bg-muted/50 [&_.sommaire]:p-6 [&_.sommaire]:rounded-lg [&_.sommaire]:mb-8 [&_.sommaire]:border [&_.sommaire]:border-border [&_.tip]:bg-blue-50 [&_.tip]:border-l-4 [&_.tip]:border-blue-500 [&_.tip]:p-4 [&_.tip]:my-6 [&_.tip]:rounded-r-lg [&_.warn]:bg-orange-50 [&_.warn]:border-l-4 [&_.warn]:border-orange-500 [&_.warn]:p-4 [&_.warn]:my-6 [&_.warn]:rounded-r-lg"
+              dangerouslySetInnerHTML={{ __html: article.content }}
+            />
+            <AdSlot type="banner" className="my-10" />
 
             {/* Author Block */}
             <div className="bg-muted p-8 rounded-xl flex flex-col md:flex-row gap-6 items-center md:items-start mb-12">
