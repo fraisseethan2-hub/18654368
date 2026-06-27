@@ -3,29 +3,39 @@ export const CATEGORIES = [
   "Windows",
   "Réseaux & Wi-Fi",
   "Sécurité informatique",
+  "IA & Automatisation",
   "Astuces & Trucs",
   "Guides débutants",
   "Smartphones",
   "Bureautique",
   "Internet & Web",
+  "Comparatifs",
 ] as const;
 
 export type Category = (typeof CATEGORIES)[number];
 
 export const CATEGORY_COLORS: Record<Category, string> = {
-  Android: "from-green-400 to-green-600",
-  Windows: "from-blue-400 to-blue-600",
-  "Réseaux & Wi-Fi": "from-cyan-400 to-cyan-600",
-  "Sécurité informatique": "from-red-400 to-red-600",
-  "Astuces & Trucs": "from-yellow-400 to-orange-500",
-  "Guides débutants": "from-purple-400 to-purple-600",
-  Smartphones: "from-pink-400 to-pink-600",
-  Bureautique: "from-indigo-400 to-indigo-600",
-  "Internet & Web": "from-teal-400 to-teal-600",
+  Android: "bg-green-100 text-green-700",
+  Windows: "bg-blue-100 text-blue-700",
+  "Réseaux & Wi-Fi": "bg-cyan-100 text-cyan-700",
+  "Sécurité informatique": "bg-red-100 text-red-700",
+  "IA & Automatisation": "bg-violet-100 text-violet-700",
+  "Astuces & Trucs": "bg-orange-100 text-orange-700",
+  "Guides débutants": "bg-purple-100 text-purple-700",
+  Smartphones: "bg-pink-100 text-pink-700",
+  Bureautique: "bg-indigo-100 text-indigo-700",
+  "Internet & Web": "bg-teal-100 text-teal-700",
+  Comparatifs: "bg-amber-100 text-amber-700",
 };
 
 export type ArticleType = "actualite" | "tutoriel";
 export type Difficulty = "Débutant" | "Intermédiaire" | "Avancé";
+
+export const DIFFICULTY_COLORS: Record<Difficulty, string> = {
+  Débutant: "bg-green-100 text-green-700",
+  Intermédiaire: "bg-orange-100 text-orange-700",
+  Avancé: "bg-red-100 text-red-700",
+};
 
 export interface Article {
   id: string;
@@ -38,9 +48,62 @@ export interface Article {
   difficulty?: Difficulty; // only for tutorials
   date: string;
   content: string; // full markdown/html content
+  image?: string;
 }
 
 export const ARTICLES: Article[] = [
+  {
+    id: "act-ref-1",
+    slug: "comment-securiser-reseau-wifi-10-etapes",
+    type: "tutoriel",
+    title: "Comment sécuriser votre réseau Wi-Fi domestique en 10 étapes",
+    excerpt: "Votre réseau Wi-Fi est la porte d'entrée de votre vie numérique. Découvrez les 10 étapes essentielles pour le sécuriser contre les intrusions et protéger vos appareils connectés.",
+    category: "Sécurité informatique",
+    difficulty: "Débutant",
+    readTime: 9,
+    date: "2026-06-26T08:00:00Z",
+    content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&auto=format&fit=crop"
+  },
+  {
+    id: "act-ref-2",
+    slug: "meilleures-applications-android-gratuites-2024",
+    type: "tutoriel",
+    title: "Les meilleures applications Android gratuites de 2024",
+    excerpt: "Notre sélection des applications Android incontournables et gratuites pour la productivité, la sécurité et le divertissement. Testées et approuvées par notre équipe.",
+    category: "Android",
+    difficulty: "Débutant",
+    readTime: 7,
+    date: "2026-06-26T09:00:00Z",
+    content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=800&q=80&auto=format&fit=crop"
+  },
+  {
+    id: "act-ref-3",
+    slug: "creer-chatbot-ia-chatgpt-tutoriel-debutants",
+    type: "tutoriel",
+    title: "Créer un chatbot IA avec ChatGPT : tutoriel pour débutants",
+    excerpt: "Apprenez à créer votre propre chatbot intelligent en utilisant l'API de ChatGPT. Guide pas-à-pas avec exemples et cas d'usage pratiques pour les débutants.",
+    category: "IA & Automatisation",
+    difficulty: "Intermédiaire",
+    readTime: 12,
+    date: "2026-06-26T10:00:00Z",
+    content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&auto=format&fit=crop"
+  },
+  {
+    id: "act-ref-4",
+    slug: "installer-windows-11-sans-puce-tpm-methode-complete",
+    type: "tutoriel",
+    title: "Comment installer Windows 11 sans puce TPM 2.0 : méthode complète",
+    excerpt: "Votre PC ne possède pas de puce TPM 2.0 ? Pas de panique. Guide détaillé pour installer Windows 11 malgré cette restriction, légalement et en toute sécurité.",
+    category: "Windows",
+    difficulty: "Intermédiaire",
+    readTime: 15,
+    date: "2026-06-24T08:00:00Z",
+    content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&q=80&auto=format&fit=crop"
+  },
   {
     id: "act-1",
     slug: "android-15-nouveautes",
@@ -51,6 +114,7 @@ export const ARTICLES: Article[] = [
     readTime: 3,
     date: "2026-10-15T08:00:00Z",
     content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=800&q=80&auto=format&fit=crop"
   },
   {
     id: "act-2",
@@ -62,6 +126,7 @@ export const ARTICLES: Article[] = [
     readTime: 4,
     date: "2026-10-14T09:30:00Z",
     content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800&q=80&auto=format&fit=crop"
   },
   {
     id: "act-3",
@@ -73,6 +138,7 @@ export const ARTICLES: Article[] = [
     readTime: 5,
     date: "2026-10-12T14:15:00Z",
     content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80&auto=format&fit=crop"
   },
   {
     id: "act-4",
@@ -84,6 +150,7 @@ export const ARTICLES: Article[] = [
     readTime: 4,
     date: "2026-10-10T11:00:00Z",
     content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80&auto=format&fit=crop"
   },
   {
     id: "act-5",
@@ -95,6 +162,7 @@ export const ARTICLES: Article[] = [
     readTime: 6,
     date: "2026-10-08T16:45:00Z",
     content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=800&q=80&auto=format&fit=crop"
   },
   {
     id: "act-6",
@@ -106,6 +174,7 @@ export const ARTICLES: Article[] = [
     readTime: 7,
     date: "2026-10-05T10:20:00Z",
     content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80&auto=format&fit=crop"
   },
   {
     id: "tut-1",
@@ -118,6 +187,7 @@ export const ARTICLES: Article[] = [
     readTime: 5,
     date: "2026-09-28T09:00:00Z",
     content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=800&q=80&auto=format&fit=crop"
   },
   {
     id: "tut-2",
@@ -130,6 +200,7 @@ export const ARTICLES: Article[] = [
     readTime: 15,
     date: "2026-09-25T14:30:00Z",
     content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800&q=80&auto=format&fit=crop"
   },
   {
     id: "tut-3",
@@ -142,6 +213,7 @@ export const ARTICLES: Article[] = [
     readTime: 10,
     date: "2026-09-20T11:15:00Z",
     content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80&auto=format&fit=crop"
   },
   {
     id: "tut-4",
@@ -154,6 +226,7 @@ export const ARTICLES: Article[] = [
     readTime: 8,
     date: "2026-09-15T16:00:00Z",
     content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&auto=format&fit=crop"
   },
   {
     id: "tut-5",
@@ -166,6 +239,7 @@ export const ARTICLES: Article[] = [
     readTime: 12,
     date: "2026-09-10T10:45:00Z",
     content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80&auto=format&fit=crop"
   },
   {
     id: "tut-6",
@@ -178,6 +252,7 @@ export const ARTICLES: Article[] = [
     readTime: 7,
     date: "2026-09-05T08:30:00Z",
     content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=800&q=80&auto=format&fit=crop"
   },
   {
     id: "tut-7",
@@ -190,6 +265,7 @@ export const ARTICLES: Article[] = [
     readTime: 5,
     date: "2026-08-28T13:20:00Z",
     content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&q=80&auto=format&fit=crop"
   },
   {
     id: "tut-8",
@@ -202,5 +278,6 @@ export const ARTICLES: Article[] = [
     readTime: 20,
     date: "2026-08-20T15:10:00Z",
     content: "Contenu complet de l'article...",
+    image: "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=800&q=80&auto=format&fit=crop"
   },
 ];

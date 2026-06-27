@@ -1,0 +1,2 @@
+- [Import management in subagent-generated code](import-fixes.md) — subagents often miss imports (lucide icons, wouter Link); always verify after delegating page rewrites
+- [HyperNova color system](hypernova-colors.md) — dark hero/footer bg-[#0b0f1a], indigo accent, CATEGORY_COLORS in data.ts are badge classes (not gradients)

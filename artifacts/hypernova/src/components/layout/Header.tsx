@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { Search, Menu, X, Moon, Sun, User, LogOut, ChevronDown } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
-import { ARTICLES } from "@/lib/data";
+import { ARTICLES, CATEGORY_COLORS } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -87,7 +87,6 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const { theme, toggleTheme } = useTheme();
   const [location] = useLocation();
   const searchRef = useRef<HTMLDivElement>(null);
 
@@ -131,40 +130,45 @@ export function Header() {
     { href: "/contact", label: "Contact" },
   ];
 
+  const Logo = ({ white = false }) => (
+    <Link href="/" className="flex items-center gap-3 group shrink-0">
+      <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-blue-500 rounded-lg flex items-center justify-center shadow-sm">
+        <span className="text-white font-bold text-lg">HN</span>
+      </div>
+      <div className="flex flex-col">
+        <span className={cn("text-xl font-bold leading-none", white ? "text-white" : "text-gray-900")}>
+          HyperNova
+        </span>
+        <span className="text-[10px] text-gray-500 font-medium uppercase tracking-tight">
+          Learning Institute
+        </span>
+      </div>
+    </Link>
+  );
+
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 w-full transition-all duration-300 border-b",
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md border-border shadow-sm py-2"
-          : "bg-background border-transparent py-4",
+        "sticky top-0 z-40 w-full transition-all duration-300 border-b bg-white",
+        isScrolled ? "py-2 shadow-sm" : "py-4",
       )}
       data-testid="main-header"
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between gap-4">
-
-          {/* Logo */}
-          <Link href="/" className="flex flex-col group shrink-0">
-            <span className="text-2xl font-black tracking-tight text-primary leading-none group-hover:text-secondary transition-colors">
-              HyperNova
-            </span>
-            <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Learning Institute
-            </span>
-          </Link>
+          <Logo />
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+          <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "px-3 py-2 text-sm font-medium rounded-md transition-colors",
+                  "text-sm font-semibold transition-colors",
                   location === link.href
-                    ? "bg-primary/10 text-primary"
-                    : "text-foreground/80 hover:bg-muted hover:text-foreground",
+                    ? "text-indigo-600"
+                    : "text-gray-600 hover:text-indigo-600",
                 )}
               >
                 {link.label}
@@ -173,14 +177,14 @@ export function Header() {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-3">
             {/* Search */}
             <div className="relative" ref={searchRef}>
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
-                className={cn(isSearchOpen && "bg-muted")}
+                className={cn("text-gray-500 hover:text-indigo-600", isSearchOpen && "bg-gray-100")}
                 aria-label="Rechercher"
                 data-testid="button-search"
               >
@@ -188,14 +192,14 @@ export function Header() {
               </Button>
 
               {isSearchOpen && (
-                <div className="absolute right-0 top-full mt-2 w-80 md:w-96 bg-card border border-border rounded-lg shadow-lg overflow-hidden animate-in fade-in slide-in-from-top-2">
-                  <div className="p-3 border-b border-border">
+                <div className="absolute right-0 top-full mt-2 w-80 md:w-96 bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-2">
+                  <div className="p-3 border-b border-gray-100">
                     <Input
                       autoFocus
-                      placeholder="Rechercher un article, tutoriel..."
+                      placeholder="Rechercher un tutoriel, un guide..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="bg-muted border-none"
+                      className="bg-gray-50 border-none h-10"
                       data-testid="input-search"
                     />
                   </div>
@@ -205,13 +209,13 @@ export function Header() {
                         <div className="p-2 space-y-1">
                           {searchResults.map((article) => (
                             <Link key={article.id} href={`/article/${article.slug}`}>
-                              <div className="block p-2 hover:bg-muted rounded-md transition-colors cursor-pointer" data-testid={`search-result-${article.id}`}>
+                              <div className="block p-3 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer" data-testid={`search-result-${article.id}`}>
                                 <div className="flex items-center justify-between mb-1">
-                                  <Badge variant="secondary" className="text-[10px] py-0">
+                                  <Badge className={cn("text-[10px] py-0 border-none font-bold", CATEGORY_COLORS[article.category])}>
                                     {article.category}
                                   </Badge>
                                 </div>
-                                <h4 className="text-sm font-medium text-foreground line-clamp-1">
+                                <h4 className="text-sm font-bold text-gray-900 line-clamp-1">
                                   {article.title}
                                 </h4>
                               </div>
@@ -219,12 +223,12 @@ export function Header() {
                           ))}
                         </div>
                       ) : (
-                        <div className="p-4 text-center text-sm text-muted-foreground">
+                        <div className="p-6 text-center text-sm text-gray-500">
                           Aucun résultat pour "{searchQuery}"
                         </div>
                       )
                     ) : (
-                      <div className="p-4 text-center text-sm text-muted-foreground">
+                      <div className="p-6 text-center text-sm text-gray-500">
                         Tapez au moins 3 caractères pour rechercher
                       </div>
                     )}
@@ -233,28 +237,22 @@ export function Header() {
               )}
             </div>
 
-            {/* Dark mode */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              aria-label="Changer le thème"
-              data-testid="button-toggle-theme"
-            >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-            </Button>
+            <Link href="/tutoriels" className="hidden sm:block">
+              <Button className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full px-6 font-bold" data-testid="button-explore">
+                Explorer les guides
+              </Button>
+            </Link>
 
             {/* Auth — desktop */}
-            <div className="hidden md:flex items-center gap-1.5">
+            <div className="hidden md:flex items-center gap-2">
               <Show when="signed-out">
                 <Link href="/sign-in">
-                  <Button variant="ghost" size="sm" className="text-sm" data-testid="button-sign-in">
+                  <Button variant="ghost" size="sm" className="text-gray-600 font-semibold" data-testid="button-sign-in">
                     Connexion
                   </Button>
                 </Link>
                 <Link href="/sign-up">
-                  <Button size="sm" className="text-sm" data-testid="button-sign-up">
+                  <Button variant="outline" size="sm" className="border-gray-200 text-gray-900 font-semibold" data-testid="button-sign-up">
                     Créer un compte
                   </Button>
                 </Link>
@@ -268,11 +266,11 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden"
+              className="lg:hidden text-gray-600"
               onClick={() => setIsMobileMenuOpen(true)}
               data-testid="button-mobile-menu"
             >
-              <Menu className="w-5 h-5" />
+              <Menu className="w-6 h-6" />
             </Button>
           </div>
         </div>
@@ -280,14 +278,9 @@ export function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-background md:hidden flex flex-col animate-in slide-in-from-right-full duration-300">
+        <div className="fixed inset-0 z-50 bg-white lg:hidden flex flex-col animate-in slide-in-from-right-full duration-300">
           <div className="flex items-center justify-between p-4 border-b">
-            <div className="flex flex-col">
-              <span className="text-xl font-black text-primary leading-none">HyperNova</span>
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-                Learning Institute
-              </span>
-            </div>
+            <Logo />
             <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)} data-testid="button-close-mobile-menu">
               <X className="w-6 h-6" />
             </Button>
@@ -298,35 +291,41 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "block p-4 text-lg font-semibold rounded-lg",
+                  "block p-4 text-lg font-bold rounded-xl transition-colors",
                   location === link.href
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted/50 text-foreground",
+                    ? "bg-indigo-50 text-indigo-600"
+                    : "text-gray-900 hover:bg-gray-50",
                 )}
               >
                 {link.label}
               </Link>
             ))}
-            {/* Mobile auth links */}
-            <Show when="signed-out">
-              <Link href="/sign-in">
-                <div className="block p-4 text-lg font-semibold rounded-lg bg-muted/50 text-foreground" data-testid="mobile-link-sign-in">
-                  Connexion
-                </div>
+            <div className="mt-4 pt-4 border-t border-gray-100 flex flex-col gap-3">
+              <Link href="/tutoriels">
+                <Button className="w-full bg-indigo-600 text-white font-bold h-12 rounded-xl">
+                  Explorer les guides
+                </Button>
               </Link>
-              <Link href="/sign-up">
-                <div className="block p-4 text-lg font-semibold rounded-lg bg-primary text-white" data-testid="mobile-link-sign-up">
-                  Créer un compte
-                </div>
-              </Link>
-            </Show>
-            <Show when="signed-in">
-              <Link href="/mon-compte">
-                <div className="block p-4 text-lg font-semibold rounded-lg bg-muted/50 text-foreground" data-testid="mobile-link-mon-compte">
-                  Mon compte
-                </div>
-              </Link>
-            </Show>
+              <Show when="signed-out">
+                <Link href="/sign-in">
+                  <Button variant="ghost" className="w-full font-bold h-12 text-gray-600">
+                    Connexion
+                  </Button>
+                </Link>
+                <Link href="/sign-up">
+                  <Button variant="outline" className="w-full font-bold h-12 border-gray-200">
+                    Créer un compte
+                  </Button>
+                </Link>
+              </Show>
+              <Show when="signed-in">
+                <Link href="/mon-compte">
+                  <Button variant="outline" className="w-full font-bold h-12 border-gray-200 text-gray-900">
+                    Mon compte
+                  </Button>
+                </Link>
+              </Show>
+            </div>
           </nav>
         </div>
       )}

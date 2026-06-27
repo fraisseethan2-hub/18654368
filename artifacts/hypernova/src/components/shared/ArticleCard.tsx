@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "wouter";
-import { Clock, BookOpen, ChevronRight } from "lucide-react";
-import { Article, CATEGORY_COLORS } from "@/lib/data";
+import { Clock, ChevronRight } from "lucide-react";
+import { Article, CATEGORY_COLORS, DIFFICULTY_COLORS } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 
@@ -12,13 +12,15 @@ interface ArticleCardProps {
 }
 
 export function ArticleCard({ article, className, featured = false }: ArticleCardProps) {
-  const gradientClass = CATEGORY_COLORS[article.category] || "from-gray-400 to-gray-600";
+  const categoryColor = CATEGORY_COLORS[article.category] || "bg-gray-100 text-gray-700";
+  const difficultyColor = article.difficulty ? DIFFICULTY_COLORS[article.difficulty] : "";
+  const imageUrl = article.image || "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80&auto=format&fit=crop";
 
   return (
     <div 
       className={cn(
-        "group flex flex-col bg-card rounded-lg overflow-hidden border border-border shadow-sm hover:shadow-md transition-all duration-300",
-        featured ? "md:flex-row md:items-stretch" : "",
+        "group flex flex-col bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300",
+        featured ? "md:grid md:grid-cols-3 md:items-stretch" : "",
         className
       )}
       data-testid={`article-card-${article.slug}`}
@@ -26,19 +28,20 @@ export function ArticleCard({ article, className, featured = false }: ArticleCar
       <div 
         className={cn(
           "relative overflow-hidden shrink-0",
-          featured ? "w-full md:w-2/5 lg:w-1/2 aspect-video md:aspect-auto" : "w-full aspect-video"
+          featured ? "md:col-span-2 aspect-video md:aspect-auto" : "w-full aspect-video"
         )}
       >
-        <div className={cn("absolute inset-0 bg-gradient-to-br opacity-80 group-hover:scale-105 transition-transform duration-500", gradientClass)} />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <BookOpen className="w-12 h-12 text-white/40" />
-        </div>
-        <div className="absolute top-3 left-3 flex flex-wrap gap-2">
-          <Badge className="bg-white/90 text-primary hover:bg-white border-none shadow-sm backdrop-blur-sm">
+        <img 
+          src={imageUrl} 
+          alt={article.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="absolute bottom-3 left-3 flex flex-wrap gap-2">
+          <Badge className={cn("border-none shadow-sm font-semibold", categoryColor)}>
             {article.category}
           </Badge>
           {article.difficulty && (
-            <Badge variant="secondary" className="bg-black/50 text-white hover:bg-black/60 border-none backdrop-blur-sm">
+            <Badge className={cn("border-none shadow-sm font-semibold", difficultyColor)}>
               {article.difficulty}
             </Badge>
           )}
@@ -47,37 +50,38 @@ export function ArticleCard({ article, className, featured = false }: ArticleCar
       
       <div className={cn(
         "flex flex-col flex-1 p-5",
-        featured ? "justify-center md:p-8" : ""
+        featured ? "md:p-8" : ""
       )}>
-        <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3 font-medium uppercase tracking-wider">
-          {article.type === "actualite" ? "Actualité" : "Tutoriel"}
-          <span className="w-1 h-1 rounded-full bg-border" />
+        <div className="flex items-center gap-2 text-xs text-gray-500 mb-3 font-medium">
+          <span>Rédaction HyperNova</span>
+          <span className="w-1 h-1 rounded-full bg-gray-300" />
           <span className="flex items-center gap-1">
             <Clock className="w-3 h-3" /> {article.readTime} min
+          </span>
+          <span className="w-1 h-1 rounded-full bg-gray-300" />
+          <span>
+            {new Date(article.date).toLocaleDateString("fr-FR", { day: 'numeric', month: 'short' })}
           </span>
         </div>
         
         <Link href={`/article/${article.slug}`} className="block group/link">
           <h3 className={cn(
-            "font-bold text-foreground mb-3 line-clamp-2 group-hover/link:text-primary transition-colors",
-            featured ? "text-2xl md:text-3xl line-clamp-3" : "text-lg"
+            "font-bold text-gray-900 mb-3 group-hover/link:text-indigo-600 transition-colors",
+            featured ? "text-2xl md:text-3xl" : "text-lg"
           )}>
             {article.title}
           </h3>
         </Link>
         
         <p className={cn(
-          "text-muted-foreground line-clamp-3",
-          featured ? "text-base mb-6" : "text-sm mb-4"
+          "text-gray-500 line-clamp-3 mb-4",
+          featured ? "text-base md:text-lg lg:line-clamp-4" : "text-sm"
         )}>
           {article.excerpt}
         </p>
         
-        <div className="mt-auto pt-4 flex items-center justify-between border-t border-border/50">
-          <span className="text-xs text-muted-foreground">
-            {new Date(article.date).toLocaleDateString("fr-FR", { day: 'numeric', month: 'short', year: 'numeric' })}
-          </span>
-          <Link href={`/article/${article.slug}`} className="text-sm font-semibold text-primary hover:text-primary/80 flex items-center gap-1 group/btn">
+        <div className="mt-auto pt-4">
+          <Link href={`/article/${article.slug}`} className="text-sm font-bold text-indigo-600 hover:text-indigo-700 flex items-center gap-1 group/btn">
             Lire la suite <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
           </Link>
         </div>
