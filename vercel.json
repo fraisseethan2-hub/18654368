@@ -1,6 +1,6 @@
 {
   "buildCommand": "pnpm --filter @workspace/hypernova run build",
-  "outputDirectory": "artifacts/hypernova/dist/public",
+  "outputDirectory": "artifacts/hypernova/dist",
   "framework": null,
   "installCommand": "pnpm install",
   "rewrites": [
